@@ -1,6 +1,7 @@
 import React from 'react';
 import DynamicIcon from '../Icon';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 const ItemBar = () => {
   const menuItemList = [
@@ -12,22 +13,36 @@ const ItemBar = () => {
     { name: 'Kategoriler', icon: 'categories', path: '/categories' },
   ];
 
+  let location = useLocation();
+  console.log('location: ', location.pathname);
+  const [selectedItem, setSelectedItem] = useState(location.pathname);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
   return (
     <div className="bg-[#292937]  drop-shadow-2xl shadow-white h-screen w-2/3 -skew-y-12 rounded-2xl">
-      <div className="skew-y-12 pt-20 h-screen flex flex-col ">
-        <ul>
+      <div className="skew-y-12 pt-36 h-screen flex flex-col ">
+        <ul className="">
           {menuItemList.map((item) => (
-            <li
-              className="flex  p-2 pl-8 hover:bg-primary hover:text-red-600 hover:pl-3 hover:rounded-l-lg hover:ml-1"
-              key={item.name}
-            >
-              <Link to={item.path}>
+            <Link to={item.path} className="w-full h-full">
+              <li
+                className={`flex  p-2 pl-8 hover:bg-primary hover:text-red-600 hover:pl-3 hover:rounded-l-lg hover:ml-1 ${
+                  selectedItem?.path === item.path ||
+                  item.path === location.pathname
+                    ? 'bg-primary text-red-600 pl-3 rounded-l-lg ml-1'
+                    : ''
+                }`}
+                key={item.name}
+                onClick={() => handleItemClick(item)}
+              >
                 <div className="flex gap-3 items-center">
                   <DynamicIcon name={item.icon} />
                   <h2 className="text-lg">{item.name}</h2>
                 </div>
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>

@@ -17,7 +17,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div></div>
-      <div className="flex  justify-end p-2 pt-4 content-end gap-1">
+      <div className="flex  justify-end p-2 pt-12 content-end gap-1">
         <MenuBar />
         <ItemBar />
       </div>
