@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Kesfet = () => {
   return (
     <div className="h-screen flex bg-primary text-white items-center justify-center">
-      Home
+      Kesfet
     </div>
   );
 };
 
-export default Home;
+export default Kesfet;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Development = () => {
   return (
     <div className="h-screen flex bg-primary text-white items-center justify-center">
-      Home
+      Development
     </div>
   );
 };
 
-export default Home;
+export default Development;

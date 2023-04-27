@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Categories = () => {
   return (
     <div className="h-screen flex bg-primary text-white items-center justify-center">
-      Home
+      Categories
     </div>
   );
 };
 
-export default Home;
+export default Categories;
