@@ -1,40 +1,24 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import { authController } from './controller/auth.controller';
 const router = express.Router();
-import { check } from 'express-validator';
+import { AuthenticatonValidatior } from '../middleware/validation.middleware';
 
 router.post(
   '/login',
-  [
-    check('email').optional().trim().isEmail().withMessage('You must be valid'),
-    check('password')
-      .isLength({ min: 6 })
-      .withMessage('Password must be at least 6 characters'),
-  ],
+  AuthenticatonValidatior.loginValidator,
   authController.login
 );
 router.post(
   '/register',
-  [
-    check('name')
-      .isLength({ min: 3 })
-      .isString()
-      .withMessage('name number must be valid'),
-    check('surname')
-      .isLength({ min: 3 })
-      .isString()
-      .withMessage('surname number must be valid'),
-    check('email').optional().trim().isEmail().withMessage('You must be valid'),
-    check('password')
-      .isLength({ min: 6 })
-      .withMessage('Password must be at least 6 characters'),
-    check('phone_number')
-      .isLength({ min: 10 })
-      .isNumeric()
-      .withMessage('Phone number must be valid'),
-  ],
+  AuthenticatonValidatior.registerValidator,
   authController.register
 );
+router.get(
+  '/currentuser',
+  AuthenticatonValidatior.currentUserValidatior,
+  authController.currentUser
+);
+
 router.post('/logout', authController.logout);
 
 export { router as AuthenticationRouter };

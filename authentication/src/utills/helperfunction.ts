@@ -4,16 +4,25 @@ import { config } from '../environment/development.config';
 import { validationResult } from 'express-validator';
 
 export async function saveUserCookie(email: string, id: string, req: Request) {
-  const payload = {
-    user: {
-      id,
-      email,
-    },
-  };
-  const token: string = jwt.sign(payload, config.jwt_key, {
+  const token: string = jwt.sign({ user: { id, email } }, config.jwt_key, {
     expiresIn: 360000,
   });
   req.session = { jwt: token };
+}
+
+export interface userPayload {
+  id: string;
+  email: string;
+}
+
+export async function checkUser(req: Request) {
+  const token = req.session?.jwt;
+  const error = 'token not valid';
+  if (!token) {
+    return error;
+  }
+  const payload = (await jwt.verify(token, config.jwt_key)) as userPayload;
+  return payload;
 }
 
 export const validationResultController = (req: Request, res: Response) => {

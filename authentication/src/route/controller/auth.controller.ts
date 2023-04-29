@@ -2,9 +2,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import { User, UserAttrs } from '../../model/user.model';
 import { Password } from '../../model/psswd/password.service';
 import {
-  saveUserCookie,
   validationResultController,
-} from '../../helper/helperfunction';
+  saveUserCookie,
+} from '../../utills/helperfunction';
 
 export const authController = {
   login: async (req: Request, res: Response) => {
@@ -40,6 +40,10 @@ export const authController = {
       .catch((err) => {
         throw new Error('505 Register Error: ' + err.message);
       });
+  },
+
+  currentUser: async (req: Request, res: Response) => {
+    res.send({ currentUser: req.currentUser || null });
   },
 
   logout: async (req: Request, res: Response) => {
