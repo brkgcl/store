@@ -4,7 +4,7 @@ import ItemBar from './component/ItemBar';
 
 const Sidebar = () => {
   return (
-    <div className="flex-1 bg-secondary text-white fixed ">
+    <div className="flex flex-col bg-secondary text-white ">
       <div className="flex p-8 items-center gap-3">
         <img
           className="w-12 h-12 rounded-full"

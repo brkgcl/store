@@ -11,9 +11,11 @@ import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="w-full h-full flex">
-      <Sidebar />
-      <div className="flex-[3]">
+    <div className="w-full h-full flex fixed">
+      <div className="flex-1 ">
+        <Sidebar />
+      </div>
+      <div className="flex-[4] flex-col  ">
         <Navbar />
         {children}
       </div>
