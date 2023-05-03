@@ -1,9 +1,10 @@
 import React from 'react';
+import MainSlider from './components/MainSlider';
 
 const Game = () => {
   return (
-    <div className="h-screen flex bg-primary text-white items-center justify-center">
-      Game
+    <div className="h-screen flex bg-primary text-white p-8">
+      <MainSlider />
     </div>
   );
 };
