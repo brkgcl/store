@@ -3,37 +3,37 @@ import React from 'react';
 const appData = [
   {
     name: 'game',
-    img: 'https://cdn.dribbble.com/users/465131/screenshots/14718799/media/ca9b2df64b8b4510ec4957a363038f6b.jpg?compress=1&resize=400x300',
+    img: 'bg-[url("https://cdn.dribbble.com/users/465131/screenshots/14718799/media/ca9b2df64b8b4510ec4957a363038f6b.jpg?compress=1&resize=400x300")]',
     url: '/game',
     color: 'bg-red-400',
   },
   {
     name: 'music',
-    img: 'data:image/jpeg;base64,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',
+    img: 'bg-[url("data:image/jpeg;base64,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")]',
     url: '/music',
     color: 'bg-indigo-800',
   },
   {
     name: 'social',
-    img: 'https://static8.depositphotos.com/1005738/908/v/600/depositphotos_9080572-stock-illustration-social-media-talk-bubble-texture.jpg',
+    img: 'bg-[url("https://static8.depositphotos.com/1005738/908/v/600/depositphotos_9080572-stock-illustration-social-media-talk-bubble-texture.jpg")]',
     url: '/social',
     color: 'bg-yellow-400',
   },
   {
     name: 'sports',
-    img: 'https://getwallpapers.com/wallpaper/full/d/3/8/371378.jpg',
+    img: 'bg-[url("https://getwallpapers.com/wallpaper/full/d/3/8/371378.jpg")]',
     url: '/sports',
     color: 'bg-blue-500',
   },
   {
     name: 'tools',
-    img: 'https://img.freepik.com/free-photo/top-view-many-tools_23-2147773434.jpg',
+    img: 'bg-[url("https://img.freepik.com/free-photo/top-view-many-tools_23-2147773434.jpg")]',
     url: '/tools',
     color: 'bg-orange-600',
   },
   {
     name: 'development',
-    img: 'https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=170667a&w=0&k=20&c=4Hxpl5eAm5YAKyuA3qMVEJ62TMEV4dYasWBZ_RwcyKQ=',
+    img: 'bg-[url("https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=170667a&w=0&k=20&c=4Hxpl5eAm5YAKyuA3qMVEJ62TMEV4dYasWBZ_RwcyKQ=")]',
     url: '/development',
     color: 'bg-black',
   },
@@ -79,12 +79,61 @@ const newData = [
   //  {title: '', info: '', img: ''},
   //  {title: '', info: '', img: ''},
 ];
-
-const topicListItem = [];
+const TopicData = [
+  {
+    title: 'NinjaGame',
+    img: 'https://cdn.dribbble.com/users/465131/screenshots/14718799/media/ca9b2df64b8b4510ec4957a363038f6b.jpg?compress=1&resize=400x300',
+  },
+  {
+    title: 'Play Piano',
+    img: 'data:image/jpeg;base64,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',
+  },
+  {
+    title: 'Me2Talk',
+    img: 'https://static8.depositphotos.com/1005738/908/v/600/depositphotos_9080572-stock-illustration-social-media-talk-bubble-texture.jpg',
+  },
+  {
+    title: 'Score-News',
+    img: 'https://getwallpapers.com/wallpaper/full/d/3/8/371378.jpg',
+  },
+  {
+    title: 'Physics Adventure',
+    img: 'https://img.freepik.com/free-photo/top-view-many-tools_23-2147773434.jpg',
+  },
+  {
+    title: 'DevConsol',
+    img: 'https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=170667a&w=0&k=20&c=4Hxpl5eAm5YAKyuA3qMVEJ62TMEV4dYasWBZ_RwcyKQ=',
+  },
+  {
+    title: 'NinjaGame',
+    img: 'https://cdn.dribbble.com/users/465131/screenshots/14718799/media/ca9b2df64b8b4510ec4957a363038f6b.jpg?compress=1&resize=400x300',
+  },
+  {
+    title: 'Play Piano',
+    img: 'data:image/jpeg;base64,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',
+  },
+  {
+    title: 'Me2Talk',
+    img: 'https://static8.depositphotos.com/1005738/908/v/600/depositphotos_9080572-stock-illustration-social-media-talk-bubble-texture.jpg',
+  },
+  {
+    title: 'Score-News',
+    img: 'https://getwallpapers.com/wallpaper/full/d/3/8/371378.jpg',
+  },
+  {
+    title: 'Physics Adventure',
+    img: 'https://img.freepik.com/free-photo/top-view-many-tools_23-2147773434.jpg',
+  },
+  {
+    title: 'DevConsol',
+    img: 'https://media.istockphoto.com/id/871030872/photo/programming-code-abstract-technology-background-of-software-developer.jpg?s=170667a&w=0&k=20&c=4Hxpl5eAm5YAKyuA3qMVEJ62TMEV4dYasWBZ_RwcyKQ=',
+  },
+];
 
 const Home = () => {
   return (
-    <div className="h-full bg-primary  text-white p-8 overflow-y-scroll">
+    <div className="h-full bg-primary  text-white px-8 pb-2 overflow-y-scroll">
+      <h2 className='text-white text-2xl p-3 pt-8 font-bold"'>News</h2>
       <div className="h-1/3 ">
         <div className="h-full w-full flex gap-2">
           <div className="flex-[2] flex h-full bg-[#272b39] rounded-2xl p-2 drop-shadow-lg">
@@ -131,7 +180,7 @@ const Home = () => {
       <div className="flex  items-center gap-4 overflow-x-scroll">
         {appData.map((e) => (
           <div
-            className={`w-1/3 h-36 ${e.color} rounded-lg cursor-pointer hover:opacity-60 shadow-2xl`}
+            className={`w-1/3 h-36 ${e.img} after:opacity-40 rounded-lg cursor-pointer hover:opacity-20 shadow-2xl`}
           >
             {/* <img
               className="absolute w-44 h-36 rounded-lg opacity-40 shadow-2xl"
@@ -175,22 +224,14 @@ const Home = () => {
         <div className="w-1/2 pb-20">
           <h2 className="text-white text-2xl p-3 pt-8 font-bold">Topic</h2>
           <div className="grid gap-1 grid-cols-4 grid-rows-3 w-full h-full ">
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
-            <div className=" bg-nav2 rounded-lg hover:scale-105"></div>
+            {TopicData.map((e) => (
+              <div className=" bg-nav2 rounded-lg hover:scale-105 flex items-center justify-center cursor-pointer">
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <img className="h-12 w-12 rounded-full" src={e.img} alt="" />
+                  <h1 className="text-sm">{e.title}</h1>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
