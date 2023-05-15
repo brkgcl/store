@@ -1,29 +1,37 @@
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 import { Password } from './psswd/password.service';
 
 export interface UserAttrs {
+  _id?: ObjectId;
   name: string;
   surname: string;
   email: string;
   password: string;
-  phone_number: number;
-  status: boolean;
+  phone_number: string;
+  status?: boolean;
+  profile_image?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc;
+  CreateUser(attrs: UserAttrs): Promise<UserDoc>;
 }
 
-interface UserDoc extends mongoose.Document {
+export interface UserDoc extends mongoose.Document {
+  _id?: ObjectId;
   name: string;
   surname: string;
   email: string;
   password: string;
   phone_number: number;
-  status: boolean;
+  status?: boolean;
+  profile_image?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-const userSchema: mongoose.Schema = new mongoose.Schema(
+const UserSchema: mongoose.Schema = new mongoose.Schema(
   {
     name: { required: true, type: String },
     surname: { required: true, type: String },
@@ -31,20 +39,16 @@ const userSchema: mongoose.Schema = new mongoose.Schema(
     password: { required: true, type: String },
     phone_number: { required: true, type: Number },
     status: { type: Boolean, default: false },
+    profile_image: { type: String, default: 'logo.png' },
   },
   {
-    toJSON: {
-      transform(doc, ret) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.__v;
-      },
-    },
-    collection: 'authentication',
+    timestamps: true,
+    versionKey: false,
+    collection: 'UserAuthenticationSchema',
   }
 );
 
-userSchema.pre('save', async function (done) {
+UserSchema.pre('save', async function (done) {
   if (this.isModified('password')) {
     const hashed = await Password.toHash(this.get('password'));
     this.set('password', hashed);
@@ -52,40 +56,53 @@ userSchema.pre('save', async function (done) {
   done();
 });
 
-userSchema.statics.build = async (attrs: UserAttrs) => {
-  const newUser = new User(attrs);
-  await newUser.save();
-  return newUser;
+// UserDoc.ok(UserDoc instanceof Promise)
+
+UserSchema.statics.CreateUser = async (attrs: UserAttrs) => {
+  try {
+    const newUser = new User(attrs);
+    await newUser.save();
+    return newUser;
+  } catch (err) {
+    throw err;
+  }
 };
 
-const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
+const User = mongoose.model<UserDoc, UserModel>('User', UserSchema);
 export { User };
 
 /**
- * import bcrypt from 'bcrypt';
- * interface EncryptPassword {
-  (encryptPassword: string): Promise<string>;
-}
-interface Authenticate {
-  (plainTextPassword: string): Promise<boolean>;
-}
+ * const gnr = new Band({
+  name: 'Guns N\' Roses',
+  members: ['Axl', 'Slash']
+});
 
-interface UserType extends mongoose.Document {
-  usernname: string;
-  password: string;
-  encryptPassword: EncryptPassword;
-  authenticate: Authenticate;
-}
- * UserSchema.methods = {
-  async authenticate(plainTextPassword: string): Promise<boolean> {
-    try {
-      return await bcrypt.compare(plainTextPassword, this.password);
-    } catch (err) {
-      return false;
-    }
-  },
-  encryptPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, 8);
-  },
-};
+const promise = gnr.save();
+assert.ok(promise instanceof Promise);
+
+promise.then(function(doc) {
+  assert.equal(doc.name, 'Guns N\' Roses');
+});
+
  */
+
+// Moongoose kullanarak aşşağıdaki gibi bir interface oluşturdum
+
+// interface UserDoc extends mongoose.Document {
+//   name: string;
+//   surname: string;
+//   email: string;
+//   password: string;
+//   phone_number: number;
+//   status?: boolean;
+// }
+
+// Daha sonra aşşağıdaki static method u tanımladım.
+
+// UserSchema.statics.CreateUser = async (attrs: UserAttrs) => {
+//   const newUser = new User(attrs);
+//   await newUser.save();
+//   return Promise.resolve(newUser);
+// };
+
+// oluşturduğum CreateUser methodunu promise olarak nasıl kullanabilirim
