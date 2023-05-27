@@ -1,2 +1,2 @@
-# pwa_store
-pwa store
+# store
+store
